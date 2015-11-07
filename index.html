@@ -1,0 +1,18 @@
+<!doctype html>
+<html ng-app="App" >
+<head>
+  <meta charset="utf-8">
+  <title>LIVE</title>
+  <!-- <link rel="stylesheet" href="style.css"> -->
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.js"></script>
+  <script src="app.js"></script>
+</head>
+<body ng-controller="ScoreboardCtrl">
+  <h1>Live from JSON feed</h1>
+  <ul>
+    <li ng-repeat="game in games">
+      {{game.awayTeam}} - {{game.homeTeam}}
+    </li>
+  </ul>
+</body>
+</html>
