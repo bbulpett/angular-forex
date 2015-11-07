@@ -1,5 +1,5 @@
 <!doctype html>
-<html ng-app="App" >
+<html ng-app="app" >
 <head>
   <meta charset="utf-8">
   <title>LIVE</title>
@@ -7,11 +7,11 @@
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.js"></script>
   <script src="app.js"></script>
 </head>
-<body ng-controller="ForexCtrl">
+<body ng-controller="DataCtrl">
   <h1>Live from JSON feed</h1>
   <ul>
-    <li>
-      {{ data }}
+    <li ng-repeat="res in resources">
+      {{ res.resource.fields.name }}: {{ res.resource.fields.price }}, {{ res.resource.fields.utctime }}
     </li>
   </ul>
 </body>
