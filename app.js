@@ -6,6 +6,7 @@ App.controller('ForexCtrl', function ($scope, $http) {
     });
 });
 
+
 // var App = angular.module('App', []);
 
 // function jsonp_callback(data) {
