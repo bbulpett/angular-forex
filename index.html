@@ -11,8 +11,8 @@
 <body ng-controller="DataCtrl">
   <h1>Live Forex Rates</h1>
   <ul>
-    <li ng-repeat="res in resources">
-      {{ res.resource.fields.name }}: {{ res.resource.fields.price }}, {{ res.resource.fields.utctime }}
+    <li ng-repeat="e in elements">
+      {{ e.name }}: {{ e.price }}, {{ e.utctime }}
     </li>
   </ul>
 </body>
