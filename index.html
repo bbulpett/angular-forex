@@ -5,15 +5,24 @@
   <title>LIVE</title>
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
   <link rel="stylesheet" href="style.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular.js"></script>
   <script src="app.js"></script>
 </head>
-<body ng-controller="DataCtrl">
+<body>
   <h1>Live Forex Rates</h1>
-  <ul>
-    <li ng-repeat="e in elements">
-      {{ e.name }}: {{ e.price }}, {{ e.utctime }}
-    </li>
-  </ul>
+
+  <div ng-controller="TimeCtrl" class="clock">
+    <em>{{clock | date: 'MMM dd, yyyy HH:mm:ss'}}</em>
+    <br>
+  </div>
+
+  <div ng-controller="DataCtrl">
+    <table class="priceData">
+      <tr ng-repeat="e in elements">
+        <td>{{ e.name }}</td>
+        <td>{{ e.price }}</td>
+      </tr>
+    </table>
+  </div>
 </body>
 </html>

@@ -9,7 +9,16 @@ app.controller('DataCtrl', function ($scope, $http) {
 				  e.name = res.resource.fields.name;
 				  e.price = res.resource.fields.price;
 				  e.utctime = res.resource.fields.utctime;
+
 				  return e;
 			});
     });
 });
+
+app.controller('TimeCtrl', function($scope, $interval) {
+	var tick = function() {
+		$scope.clock = Date.now();
+	}
+	tick();
+	$interval(tick, 1000);
+})

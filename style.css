@@ -1,6 +1,14 @@
 
-h1 {
+h1, .clock {
 	text-align: center;
+}
+
+.clock {
+	font-family: Consolas, monaco, monospace;
+}
+
+table.priceData {
+	margin: 15px auto;
 }
 
 ul {
