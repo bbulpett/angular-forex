@@ -14,3 +14,7 @@ table.priceData {
 ul {
 	list-style-type: none;
 }
+
+td {
+	padding: 10px;
+}

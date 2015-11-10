@@ -17,10 +17,11 @@
   </div>
 
   <div ng-controller="DataCtrl">
-    <table class="priceData">
-      <tr ng-repeat="e in elements">
-        <td>{{ e.name }}</td>
-        <td>{{ e.price }}</td>
+    <table class="priceData table-striped table-bordered">
+      <tr ng-repeat="e in data.query.results.rate">
+        <td>{{ e.Name }}</td>
+        <td>{{ e.Rate }}</td>
+        <td>{{ e.Time | date: 'HH:mm:ss' }}</td>
       </tr>
     </table>
   </div>

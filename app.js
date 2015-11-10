@@ -1,17 +1,24 @@
 var app = angular.module('app', []);
 
+var pairsArray = ['EURUSD', 'GBPJPY', 'AUDNZD'];
+var pairsQuery = "'" + pairsArray.join(",") + "'";
+
 app.controller('DataCtrl', function ($scope, $http, $timeout) {
 
-
 	$scope.getData = function() {
-	    $http.jsonp('https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20json%20where%20url%3D%22http%3A%2F%2Ffinance.yahoo.com%2Fwebservice%2Fv1%2Fsymbols%2Fallcurrencies%2Fquote%3Fformat%3Djson%22&format=json&diagnostics=true&callback=JSON_CALLBACK').success(function (data) {
+		var yql_base_url = "https://query.yahooapis.com/v1/public/yql";
+		var yql_query = "select%20*%20from%20yahoo.finance.xchange%20where%20pair%20in%20("+pairsQuery+")";
+		var yql_query_url = yql_base_url + "?q=" + yql_query + "&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys&callback=JSON_CALLBACK";
+			$http.jsonp(yql_query_url).success(function (data) {
+
 			    $scope.data = data;
-	        // $scope.resources = data.query.results.list.resources;
-			    $scope.elements = $scope.data.query.results.list.resources.map(function (res) {
+			    $scope.elements = $scope.data.query.results.rate.map(function (resource) {
 					  var e = {};
-					  e.name = res.resource.fields.name;
-					  e.price = res.resource.fields.price;
-					  e.utctime = res.resource.fields.utctime;
+					  e.name = resource.Name;
+					  e.rate = resource.Rate;
+					  e.bid = resource.Bid;
+					  e.ask = resource.Ask;
+					  e.updateTime = resource.Time;
 	
 					  return e;
 				});
