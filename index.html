@@ -14,13 +14,14 @@
   <div ng-controller="TimeCtrl" class="clock">
     <em>{{clock | date: 'MMM dd, yyyy HH:mm:ss'}}</em>
     <br>
+    <p style="text-align: center;">Currently trading in the <strong >{{ mkt_session }}</strong> session</p>
   </div>
 
   <div ng-controller="DataCtrl">
     <table class="priceData table-striped table-bordered">
       <tr ng-repeat="e in data.query.results.rate">
-        <td>{{ e.Name }}</td>
-        <td>{{ e.Rate }}</td>
+        <td style="text-align: center;">{{ e.Name }}</td>
+        <td style="text-align: right;">{{ e.Rate | number: 4 }}</td>
         <td>{{ e.Time | date: 'HH:mm:ss' }}</td>
       </tr>
     </table>
