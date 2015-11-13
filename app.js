@@ -42,25 +42,34 @@ app.controller('TimeCtrl', function($scope, $interval) {
 	$interval(tick, 1000);
 
 	var utc = new Date().getUTCHours();
+	var mkt_session = [];
 	var getMktSession = function(utc) {
 
 		switch(true) {
 			case ( 22 <= utc || utc < 7):
-				return "Sydney";
+			mkt_session << "Sydney";
+				return mkt_session;
 			case ( 22 <= utc || utc < 6):
-				return "Wellington";
+			mkt_session << "Wellington";
+				return mkt_session;
 			case ( 0 <= utc < 9):
-				return "Tokyo";
+			mkt_session << "Tokyo";
+				return mkt_session;
 			case ( 1 <= utc < 10):
-				return "Hong Kong";
+			mkt_session << "Hong Kong";
+				return mkt_session;
 			case ( 7 <= utc < 16):
-				return "Frankfurt";
+			mkt_session << "Frankfurt";
+				return mkt_session;
 			case ( 8 <= utc < 17):
-				return "London";
+			mkt_session << "London";
+				return mkt_session;
 			case ( 13 <= utc < 22):
-				return "New York";
+			mkt_session << "New York";
+				return mkt_session;
 			case ( 14 <= utc < 23):
-				return "Chicago";
+			mkt_session << "Chicago";
+				return mkt_session;
 		}
 	}
 	$scope.mkt_session = getMktSession(utc);
