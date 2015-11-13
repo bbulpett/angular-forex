@@ -42,37 +42,21 @@ app.controller('TimeCtrl', function($scope, $interval) {
 	$interval(tick, 1000);
 
 	var utc = new Date().getUTCHours();
-	var mkt_session = [];
 	var getMktSession = function(utc) {
+		var mkt_sessions = [];
 
-		switch(true) {
-			case ( 22 <= utc || utc < 7):
-			mkt_session << "Sydney";
-				return mkt_session;
-			case ( 22 <= utc || utc < 6):
-			mkt_session << "Wellington";
-				return mkt_session;
-			case ( 0 <= utc < 9):
-			mkt_session << "Tokyo";
-				return mkt_session;
-			case ( 1 <= utc < 10):
-			mkt_session << "Hong Kong";
-				return mkt_session;
-			case ( 7 <= utc < 16):
-			mkt_session << "Frankfurt";
-				return mkt_session;
-			case ( 8 <= utc < 17):
-			mkt_session << "London";
-				return mkt_session;
-			case ( 13 <= utc < 22):
-			mkt_session << "New York";
-				return mkt_session;
-			case ( 14 <= utc < 23):
-			mkt_session << "Chicago";
-				return mkt_session;
+		switch(mkt_sessions.join(', ')) {
+			case '22 23 0 1 2 3 4 5 6': mkt_sessions.push("Sydney");return mkt_sessions;
+			case '22 23 0 1 2 3 4 5': mkt_sessions.push("Wellington");return mkt_sessions;
+			case '0 1 2 3 4 5 6 7 8': mkt_sessions.push("Tokyo");return mkt_sessions;
+			case '1 2 3 4 5 6 7 8 9': mkt_sessions.push("Hong Kong");return mkt_sessions;
+			case '7 8 9 10 11 12 13 14 15': mkt_sessions.push("Frankfurt");return mkt_sessions;
+			case '8 9 10 11 12 13 14 15 16': mkt_sessions.push("London");return mkt_sessions;
+			case '13 14 15 16 17 18 19 20 21': mkt_sessions.push("New York");return mkt_sessions;
+			case '14 15 16 17 18 19 20 21 22': mkt_sessions.push("Chicago");return mkt_sessions;
 		}
 	}
-	$scope.mkt_session = getMktSession(utc);
+	$scope.mkt_sessions = getMktSession(utc);
 	$interval(getMktSession, 60000);
 });
 
